@@ -79,7 +79,7 @@ export const ArticleParamsForm = ({ onApply }: ArticleParamsFormProps) => {
 						/>
 					</div>
 					<RadioGroup
-						name='font-size'
+						name='radio'
 						title='Размер шрифта'
 						options={fontSizeOptions}
 						selected={formState.fontSizeOption}
