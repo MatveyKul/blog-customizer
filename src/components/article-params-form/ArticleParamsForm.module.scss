@@ -16,6 +16,7 @@
 	display: flex;
 	flex-shrink: 0;
 	flex-direction: column;
+	gap: 24px;
 	box-sizing: border-box;
 	width: 616px;
 	height: auto;
@@ -25,8 +26,16 @@
 	border-right: 1px solid #000000;
 }
 
+.separatorBlock {
+	margin: 26px 0;
+}
+
+.spacingTop {
+	margin-top: 26px;
+}
+
 .bottomContainer {
 	display: flex;
 	justify-content: space-between;
-	margin-top: auto;
+	margin-top: 183px;
 }
