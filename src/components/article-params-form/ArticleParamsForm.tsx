@@ -43,6 +43,11 @@ export const ArticleParamsForm = ({ onApply }: ArticleParamsFormProps) => {
 		return () => document.removeEventListener('mousedown', handleClickOutside);
 	}, [isSidebarOpen]);
 
+	const handleChange =
+		<K extends keyof ArticleStateType>(field: K) =>
+		(value: ArticleStateType[K]) =>
+			setFormState((prev) => ({ ...prev, [field]: value }));
+
 	const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
 	const handleApply = () => {
@@ -73,9 +78,7 @@ export const ArticleParamsForm = ({ onApply }: ArticleParamsFormProps) => {
 							title='Шрифт'
 							options={fontFamilyOptions}
 							selected={formState.fontFamilyOption}
-							onChange={(option) =>
-								setFormState({ ...formState, fontFamilyOption: option })
-							}
+							onChange={handleChange('fontFamilyOption')}
 						/>
 					</div>
 					<RadioGroup
@@ -83,17 +86,13 @@ export const ArticleParamsForm = ({ onApply }: ArticleParamsFormProps) => {
 						title='Размер шрифта'
 						options={fontSizeOptions}
 						selected={formState.fontSizeOption}
-						onChange={(option) =>
-							setFormState({ ...formState, fontSizeOption: option })
-						}
+						onChange={handleChange('fontSizeOption')}
 					/>
 					<Select
 						title='Цвет шрифта'
 						options={fontColors}
 						selected={formState.fontColor}
-						onChange={(option) =>
-							setFormState({ ...formState, fontColor: option })
-						}
+						onChange={handleChange('fontColor')}
 					/>
 					<div className={styles.separatorBlock}>
 						<Separator />
@@ -102,17 +101,13 @@ export const ArticleParamsForm = ({ onApply }: ArticleParamsFormProps) => {
 						title='Цвет фона'
 						options={backgroundColors}
 						selected={formState.backgroundColor}
-						onChange={(option) =>
-							setFormState({ ...formState, backgroundColor: option })
-						}
+						onChange={handleChange('backgroundColor')}
 					/>
 					<Select
 						title='Ширина контента'
 						options={contentWidthArr}
 						selected={formState.contentWidth}
-						onChange={(option) =>
-							setFormState({ ...formState, contentWidth: option })
-						}
+						onChange={handleChange('contentWidth')}
 					/>
 					<div className={styles.bottomContainer}>
 						<Button
